@@ -13,6 +13,7 @@ public class CalculadoraMulta {
         if (diasDeRetraso <= 0) {
             return 0;
         }
-        return Math.min((int) diasDeRetraso * MULTA_POR_DIA, MULTA_MAXIMA);
+        int multa = Math.min((int) diasDeRetraso * MULTA_POR_DIA, MULTA_MAXIMA);
+        return esMonitor ? multa / 2 : multa;
     }
 }
