@@ -40,4 +40,24 @@ class CalculadoraMultaTest {
 
         assertEquals(0, multa);
     }
+
+    @Test
+    @DisplayName("calcular_25DiasDeRetraso_multaJustoAlTope")
+    void calcular_25DiasDeRetraso_multaJustoAlTope() {
+
+        CalculadoraMulta calculadora = new CalculadoraMulta();
+        int multa = calculadora.calcular(LIMITE, LIMITE.plusDays(25), false);
+
+        assertEquals(50000, multa);
+    }
+
+    @Test
+    @DisplayName("calcular_40DiasDeRetraso_multaSeLimitaAlTope")
+    void calcular_40DiasDeRetraso_multaSeLimitaAlTope() {
+
+        CalculadoraMulta calculadora = new CalculadoraMulta();
+        int multa = calculadora.calcular(LIMITE, LIMITE.plusDays(40), false);
+
+        assertEquals(50000, multa);
+    }
 }
