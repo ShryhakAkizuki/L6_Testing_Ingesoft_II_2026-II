@@ -60,4 +60,14 @@ class CalculadoraMultaTest {
 
         assertEquals(50000, multa);
     }
+
+    @Test
+    @DisplayName("calcular_monitorTresDiasDeRetraso_pagaMitad")
+    void calcular_monitorTresDiasDeRetraso_pagaMitad() {
+
+        CalculadoraMulta calculadora = new CalculadoraMulta();
+        int multa = calculadora.calcular(LIMITE, LIMITE.plusDays(3), true);
+
+        assertEquals(3000, multa);
+    }
 }
