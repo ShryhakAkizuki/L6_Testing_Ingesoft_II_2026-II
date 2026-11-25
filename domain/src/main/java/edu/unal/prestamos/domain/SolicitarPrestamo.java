@@ -6,7 +6,7 @@ public class SolicitarPrestamo {
     final PrestamoRepository repositorio;
     final Notificador notificador;
 
-    SolicitarPrestamo(DisponibilidadEquipos disponibilidad, PrestamoRepository repositorio, Notificador notificador) {
+    public SolicitarPrestamo(DisponibilidadEquipos disponibilidad, PrestamoRepository repositorio, Notificador notificador) {
         this.disponibilidad = disponibilidad;
         this.repositorio = repositorio;
         this.notificador = notificador;
