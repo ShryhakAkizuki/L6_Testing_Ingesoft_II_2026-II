@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -75,5 +76,20 @@ class DisponibilidadEquiposHttpTest {
         );
 
         assertEquals("HTTP 500", excepcion.getMessage());
+    }
+
+    @Test
+    @DisplayName("Un error de red lanza ServicioNoDisponible y conserva la causa")
+    void estaDisponible_errorDeRed_lanzaServicioNoDisponible() throws IOException {
+        String urlBase = servidor.url("").toString();
+        servidor.shutdown();
+        adaptador = new DisponibilidadEquiposHttp(urlBase);
+
+        ServicioNoDisponible excepcion = assertThrows(
+                ServicioNoDisponible.class,
+                () -> adaptador.estaDisponible(12)
+        );
+
+        assertNotNull(excepcion.getCause());
     }
 }
